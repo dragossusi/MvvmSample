@@ -1,6 +1,6 @@
 package ro.dragossusi.sample.repository
 
-import ro.dragossusi.livedata.resource.DataResource
+import ro.dragossusi.resource.DataResource
 import ro.dragossusi.sample.data.Issue
 
 

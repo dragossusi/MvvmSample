@@ -34,7 +34,8 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.29.1-alpha"
     kapt "com.google.dagger:hilt-android-compiler:2.29.1-alpha"
 
-    implementation 'ro.dragossusi:livedata-resource:1.0'
+    implementation 'ro.dragossusi:resource:1.0.1'
+    implementation 'ro.dragossusi:resource-livedata:1.0.1'
     api project(':data')
     api project(':repository')
 

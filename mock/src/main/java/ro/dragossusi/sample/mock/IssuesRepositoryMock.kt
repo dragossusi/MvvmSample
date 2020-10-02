@@ -1,7 +1,7 @@
 package ro.dragossusi.sample.mock
 
 import kotlinx.coroutines.delay
-import ro.dragossusi.livedata.resource.DataResource
+import ro.dragossusi.resource.DataResource
 import ro.dragossusi.sample.data.Issue
 import ro.dragossusi.sample.repository.IssuesRepository
 import javax.inject.Inject

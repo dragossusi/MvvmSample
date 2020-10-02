@@ -34,7 +34,7 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.29.1-alpha"
     kapt "com.google.dagger:hilt-android-compiler:2.29.1-alpha"
 
-    api project(path: ':repository')
+    api project(':repository')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

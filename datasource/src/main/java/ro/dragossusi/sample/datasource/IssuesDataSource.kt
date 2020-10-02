@@ -18,8 +18,8 @@ class IssuesDataSource @Inject constructor(
     override val context: CoroutineContext
 ) : DataSource {
 
-    fun getIssues() = dataResourceLiveData<List<Issue>> {
-        emit(repository.getIssues())
+    fun getIssues() = dataResourceLiveData {
+        repository.getIssues()
     }
 
 
