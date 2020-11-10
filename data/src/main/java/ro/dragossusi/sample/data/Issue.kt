@@ -1,5 +1,7 @@
 package ro.dragossusi.sample.data
 
+import com.google.gson.annotations.SerializedName
+
 
 /**
  *
@@ -7,6 +9,8 @@ package ro.dragossusi.sample.data
  * @author dragos
  */
 class Issue(
+    @SerializedName("title")
     val title: String,
+    @SerializedName("subtitle")
     val subtitle: String
 )

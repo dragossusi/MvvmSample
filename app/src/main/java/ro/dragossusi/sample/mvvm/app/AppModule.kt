@@ -6,7 +6,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import ro.dragossusi.sample.mock.MockModule
 
 
 /**
@@ -15,7 +14,7 @@ import ro.dragossusi.sample.mock.MockModule
  * @author dragos
  */
 @InstallIn(ApplicationComponent::class)
-@Module(includes = [MockModule::class])
+@Module
 class AppModule {
 
     @Provides

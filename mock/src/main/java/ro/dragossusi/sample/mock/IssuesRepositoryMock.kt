@@ -8,6 +8,7 @@ import javax.inject.Inject
 
 
 /**
+ * Hardcoded date used to test without an API
  *
  * @since 9/23/20
  * @author dragos
