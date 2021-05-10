@@ -17,7 +17,7 @@ class IssuesRepositoryImpl @Inject constructor(
     private val apiClient: ApiClient
 ) : IssuesRepository {
 
-    override suspend fun getIssues(): DataResource<List<Issue>> {
+    override suspend fun getIssues(): List<Issue> {
         return apiClient.getIssues()
     }
 }

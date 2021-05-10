@@ -15,14 +15,12 @@ import javax.inject.Inject
  */
 class IssuesRepositoryMock @Inject constructor() : IssuesRepository {
 
-    override suspend fun getIssues(): DataResource<List<Issue>> {
+    override suspend fun getIssues(): List<Issue> {
         delay(2000L)
-        return DataResource.success(
-            listOf(
-                Issue(
-                    "Bug",
-                    "Not working"
-                )
+        return listOf(
+            Issue(
+                "Bug",
+                "Not working"
             )
         )
     }

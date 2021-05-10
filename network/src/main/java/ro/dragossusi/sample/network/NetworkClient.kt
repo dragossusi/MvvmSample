@@ -1,10 +1,10 @@
 package ro.dragossusi.sample.network
 
 import retrofit2.Response
+import ro.dragossusi.messagedata.MessageData
+import ro.dragossusi.messagedata.error.toThrowable
+import ro.dragossusi.messagedata.toMessageData
 import ro.dragossusi.resource.CompletionResource
-import ro.dragossusi.resource.DataResource
-import ro.rachieru.dragos.errordata.ErrorData
-import ro.rachieru.dragos.errordata.StringErrorData
 
 
 /**
@@ -19,25 +19,15 @@ abstract class NetworkClient {
      */
     suspend fun <T> dataCall(
         block: suspend () -> Response<T>
-    ): DataResource<T> {
-        return try {
-            val response = block()
-            if (response.isSuccessful) {
-                DataResource.success(
-                    response.body()
-                )
-            } else {
-                when (response.code()) {
-                    in 400..499 -> DataResource.error(
-                        createError(response)
-                    )
-                    else -> DataResource.error(
-                        ServerFailErrorData
-                    )
-                }
+    ): T {
+        val response = block()
+        return if (response.isSuccessful) {
+            response.body() as T
+        } else {
+            when (response.code()) {
+                in 400..499 -> throw createError(response).toThrowable()
+                else -> throw ServerFailErrorData.toThrowable()
             }
-        } catch (e: Exception) {
-            DataResource.error(e)
         }
     }
 
@@ -46,31 +36,23 @@ abstract class NetworkClient {
      */
     suspend fun <T> completionCall(
         block: suspend () -> Response<T>
-    ): CompletionResource {
-        return try {
-            val response = block()
-            if (response.isSuccessful) {
-                CompletionResource.completed()
-            } else {
-                when (response.code()) {
-                    in 400..499 -> CompletionResource.error(
-                        createError(response)
-                    )
-                    else -> CompletionResource.error(
-                        ServerFailErrorData
-                    )
-                }
+    ) {
+        val response = block()
+        if (response.isSuccessful) {
+            CompletionResource.completed()
+        } else {
+            when (response.code()) {
+                in 400..499 -> throw createError(response).toThrowable()
+                else -> throw ServerFailErrorData.toThrowable()
             }
-        } catch (e: Exception) {
-            CompletionResource.error(e)
         }
     }
 
     /**
      * add code for custom errors
      */
-    private fun createError(response: Response<*>): ErrorData {
-        return StringErrorData("Error")
+    private fun createError(response: Response<*>): MessageData {
+        return "Error".toMessageData()
     }
 
 }

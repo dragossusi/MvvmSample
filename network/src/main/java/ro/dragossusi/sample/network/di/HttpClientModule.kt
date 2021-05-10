@@ -3,7 +3,7 @@ package ro.dragossusi.sample.network.di
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
  * @since 13.08.2020
  */
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 class HttpClientModule {
 
     @Provides

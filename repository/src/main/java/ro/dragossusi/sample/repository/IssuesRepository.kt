@@ -10,5 +10,5 @@ import ro.dragossusi.sample.data.Issue
  * @author dragos
  */
 interface IssuesRepository {
-    suspend fun getIssues(): DataResource<List<Issue>>
+    suspend fun getIssues(): List<Issue>
 }
